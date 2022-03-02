@@ -1,0 +1,53 @@
+*:not(h1) {
+  font-size: 20px;
+}
+
+h1 {
+  color: #77a4e9;
+}
+
+body {
+  background-color: #fff2cc;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 14%;]
+}
+
+.field {
+  width: 100%;
+}
+
+.field-buttons {
+  flex-direction: row;
+}
+
+.buttons {
+  border-radius: 6px;
+  padding: 6px;
+  background-color: #77a4e9;
+}
+
+.input-field {
+  border-radius: 6px;
+  padding: 6px;
+  border-color: #cacdce;
+  border-width: 1px;
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: #b5b9ba;
+  border-width: 2px;
+}
+
+.select-field {
+  width: 100%;
+}
+
+form, h1 {
+  margin-left: 45px;
+}

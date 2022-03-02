@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>My first page</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>My first page</h1>
+    <form class="form">
+      <div class="form field">
+        <label for="name">Nume</label>
+        <input type="text" id="name" name="name" class="input-field" />
+      </div>
+
+      <div class="form field">
+        <label for="prenume">Prenume</label>
+        <input type="text" id="prenume" name="prenume" class="input-field" />
+      </div>
+
+      <div class="form field">
+        <label for="varsta">Varsta</label>
+        <select id="varsta" name="varsta" class="input-field select-field">
+          <option value="" disabled selected>Alege varsta</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+
+      <div class="form field">
+        <label for="oras">Oras</label>
+        <select id="oras" name="oras" class="input-field select-field">
+          <option value="" disabled selected>Alege orasul</option>
+          <option value="Focsani">Focsani</option>
+          <option value="Brasov">Brasov</option>
+          <option value="Iasi">Iasi</option>
+          <option value="Bucuresti">Bucuresti</option>
+          <option value="Timisoara">Timisoara</option>
+        </select>
+      </div>
+
+      <div class="form field">
+        <label for="descriere">Descriere</label>
+        <textarea
+          id="descriere"
+          rows="5"
+          columns="50"
+          name="descriere"
+          class="input-field"
+        >
+        </textarea>
+      </div>
+      <div class="form field-buttons">
+        <button class="buttons" type="button">Cancel</button>
+        <button class="buttons" type="button">Submit</button>
+      </div>
+    </form>
+  </body>
+</html>
