@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { App2Component } from './app2/app2.component';
 import { TemaCurs2Module } from './tema-curs2/tema-curs2.module';
-import { NestedModule1Module } from './nested-module1/nested-module1.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, App2Component],
@@ -15,7 +15,7 @@ import { NestedModule1Module } from './nested-module1/nested-module1.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     TemaCurs2Module,
-    NestedModule1Module,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

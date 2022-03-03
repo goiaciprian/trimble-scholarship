@@ -5,6 +5,5 @@ import { NestedModule2Module } from '../nested-module2/nested-module2.module';
 @NgModule({
   declarations: [],
   imports: [CommonModule, NestedModule2Module],
-  exports: [NestedModule2Module],
 })
 export class NestedModule1Module {}
