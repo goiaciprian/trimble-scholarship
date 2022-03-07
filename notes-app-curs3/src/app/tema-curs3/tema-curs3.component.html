@@ -1,0 +1,22 @@
+<h2 [style.backgroundColor]="culoareInput">Tema curs 3</h2>
+<p>
+  Culoarea este:
+  <span [style.color]="culoareInput"> {{ culoareInput }} </span>.
+</p>
+<mat-form-field>
+  <input matInput placeholder="Scrie culoarea" [(ngModel)]="culoareInput" />
+</mat-form-field>
+
+<br />
+
+<mat-form-field>
+  <input
+    matInput
+    placeholder="Scrie culoarea"
+    [(ngModel)]="culoareInputButon"
+  />
+</mat-form-field>
+
+<button mat-raised-button (click)="setCuloare(culoareInputButon)">
+  Modifica culoarea
+</button>
