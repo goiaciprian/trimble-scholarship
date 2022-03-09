@@ -1,25 +1,32 @@
 <h1>Add a note</h1>
 
-<form>
-  <label for="noteTitle">Titlu</label> <br />
-  <mat-form-field>
-    <input
-      matInput
-      name="noteTitle"
-      [(ngModel)]="noteTitle"
-      placeholder="Enter title"
-    />
-  </mat-form-field>
-  <br />
-  <label for="noteDescription">Descriere</label> <br />
-  <mat-form-field>
-    <textarea
-      matInput
-      name="noteDescription"
-      [(ngModel)]="noteDescription"
-      placeholder="Enter description"
-    ></textarea>
-  </mat-form-field>
-  <br />
-  <button mat-button>Add</button>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        name="noteTitle"
+        placeholder="Enter title"
+        formControlName="title"
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <textarea
+        matInput
+        name="noteDescription"
+        placeholder="Enter description"
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+  </div>
+
+  <button mat-button type="submit">Add</button>
 </form>
+
+<div *ngIf="consoleForm">
+  <p>Valid: {{ consoleForm.valid }}</p>
+  <p>title: {{ consoleForm.title }}</p>
+  <p>description: {{ consoleForm.description }}</p>
+</div>

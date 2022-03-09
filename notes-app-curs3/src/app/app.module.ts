@@ -20,6 +20,8 @@ import { FilterComponent } from './filter/filter.component';
 import { TemaCurs5Module } from './tema-curs5/tema-curs5.module';
 import { HomeComponent } from './home/home.component';
 import { AddNoteComponent } from './add-note/add-note.component';
+import { TemaCurs6Module } from './tema-curs6/tema-curs6.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { AddNoteComponent } from './add-note/add-note.component';
     FormsModule,
     MatCardModule,
     TemaCurs5Module,
+    TemaCurs6Module,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

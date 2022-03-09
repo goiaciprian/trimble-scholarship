@@ -1,0 +1,10 @@
+<h1>Parametrul din ruta este: {{ routeParameter }}</h1>
+
+<h4>Query params</h4>
+<div>
+  <ul>
+    <li *ngFor="let param of queryParams">
+      {{ param.key }} : {{ param.value }}
+    </li>
+  </ul>
+</div>

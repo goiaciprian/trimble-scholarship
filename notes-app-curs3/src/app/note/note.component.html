@@ -1,6 +1,6 @@
-<div>
-  <mat-card *ngFor="let note of notes">
-    <mat-card-header>
+<div class="mat-card-container">
+  <mat-card *ngFor="let note of notes" class="mat-card">
+    <mat-card-header class="mat-card-header">
       {{ note.title }}
     </mat-card-header>
     <mat-card-content>

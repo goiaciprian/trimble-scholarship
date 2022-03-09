@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-add-note',
@@ -7,20 +12,24 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./add-note.component.scss'],
 })
 export class AddNoteComponent implements OnInit {
-  noteTitle: string = '';
-  noteDescription: string = '';
+  myForm: FormGroup;
+  consoleForm = null;
 
-  constructor(
-    private _router: Router,
-    private _activatedRoute: ActivatedRoute
-  ) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this._activatedRoute.params.subscribe((parameter) => {
-      console.log(parameter['id']);
+    this.myForm = this.formBuilder.group({
+      title: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.minLength(10)]],
     });
-    this._activatedRoute.queryParams.subscribe((parameter) => {
-      console.log(parameter['title'], parameter['description']);
-    });
+  }
+
+  onSubmit(form: FormGroup): void {
+    console.log(form.value.description);
+    this.consoleForm = {
+      valid: form.valid,
+      title: form.value.title,
+      description: form.value.description,
+    };
   }
 }
