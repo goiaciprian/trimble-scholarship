@@ -14,9 +14,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { TemaCurs3Component } from './tema-curs3/tema-curs3.component';
+import { AddValuePipe } from './add-value.pipe';
+import { MatCardModule } from '@angular/material/card';
+import { FilterComponent } from './filter/filter.component';
+import { TemaCurs5Module } from './tema-curs5/tema-curs5.module';
 
 @NgModule({
-  declarations: [AppComponent, NoteComponent, ToolsComponent, TemaCurs3Component],
+  declarations: [
+    AppComponent,
+    NoteComponent,
+    ToolsComponent,
+    TemaCurs3Component,
+    AddValuePipe,
+    FilterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,7 +36,9 @@ import { TemaCurs3Component } from './tema-curs3/tema-curs3.component';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    TemaCurs5Module,
   ],
   providers: [],
   bootstrap: [AppComponent],

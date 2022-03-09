@@ -1,0 +1,9 @@
+<h2>Tema curs 5</h2>
+<div>
+  <p
+    *ngFor="let date of dates; let i = index; let even = even"
+    appTemaCursDirective
+  >
+    {{ i }} : {{ date | temaCursPipe: even:"dd/MM/YYYY":"dd/MM/YYYY hh:mm aa" }}
+  </p>
+</div>

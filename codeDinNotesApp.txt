@@ -1,0 +1,27 @@
+app component html 
+{% comment %} <app-tema-curs3></app-tema-curs3>
+
+<p>{{ title | uppercase }}</p>
+<p>
+  {{ date | date: "longTime" | lowercase }}
+</p>
+<p>Custom pipe: {{ defaultNumber | addValue: 10 | addValue }}</p>
+{% endcomment %}
+
+tools component 
+
+{% comment %}
+<p [style.color]="titleColor">Title is {{ title }}</p>
+<p>
+  {{ noteContent }}
+</p>
+<input type="text" [(ngModel)]="noteContent" />
+
+<mat-form-field>
+  <input matInput placeholder="Add Note" />
+</mat-form-field>
+
+<button mat-icon-button (click)="setTitle()">
+  <mat-icon>add</mat-icon>
+</button>
+{% endcomment %}
