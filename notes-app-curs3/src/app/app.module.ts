@@ -18,6 +18,8 @@ import { AddValuePipe } from './add-value.pipe';
 import { MatCardModule } from '@angular/material/card';
 import { FilterComponent } from './filter/filter.component';
 import { TemaCurs5Module } from './tema-curs5/tema-curs5.module';
+import { HomeComponent } from './home/home.component';
+import { AddNoteComponent } from './add-note/add-note.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { TemaCurs5Module } from './tema-curs5/tema-curs5.module';
     TemaCurs3Component,
     AddValuePipe,
     FilterComponent,
+    HomeComponent,
+    AddNoteComponent,
   ],
   imports: [
     BrowserModule,
