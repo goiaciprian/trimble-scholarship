@@ -1,14 +1,10 @@
 <h1>Add a note</h1>
 
-<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
   <div>
-    <mat-form-field>
-      <input
-        matInput
-        name="noteTitle"
-        placeholder="Title"
-        formControlName="title"
-      />
+    <mat-form-field appearance="fill">
+      <mat-label>Titlu</mat-label>
+      <input matInput name="noteTitle" formControlName="title" />
     </mat-form-field>
     <br />
     <small
@@ -23,11 +19,11 @@
     >
   </div>
   <div>
-    <mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Descriere</mat-label>
       <textarea
         matInput
         name="noteDescription"
-        placeholder="Description"
         formControlName="description"
       ></textarea>
     </mat-form-field>
@@ -56,11 +52,18 @@
       The minimum length for this field is 10 characters.
     </small>
   </div>
-  <button mat-button [disabled]="!myForm.valid" type="submit">Add</button>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Categorie</mat-label>
+      <select matNativeControl formControlName="categoryId">
+        <option value="-1" disabled>Alege categorie</option>
+        <option value="category.id" *ngFor="let category of categories">
+          {{ category.name }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button [disabled]="!myForm.valid" type="submit">
+    Add
+  </button>
 </form>
-
-<div *ngIf="consoleForm">
-  <p>Valid: {{ consoleForm.valid }}</p>
-  <p>title: {{ consoleForm.title }}</p>
-  <p>description: {{ consoleForm.description }}</p>
-</div>

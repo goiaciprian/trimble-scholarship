@@ -6,7 +6,7 @@ import { TemaCurs6Component } from './tema-curs6/tema-curs6/tema-curs6.component
 
 const routes: Routes = [
   { path: 'curs6/:variable', component: TemaCurs6Component },
-  { path: 'add-note/:id', component: AddNoteComponent, pathMatch: 'full' },
+  { path: 'add-note', component: AddNoteComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: '**', redirectTo: '' },
 ];

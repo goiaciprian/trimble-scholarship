@@ -22,6 +22,7 @@ import { HomeComponent } from './home/home.component';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { TemaCurs6Module } from './tema-curs6/tema-curs6.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NoteService } from './note.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TemaCurs6Module,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [NoteService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
