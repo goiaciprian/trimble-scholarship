@@ -23,6 +23,7 @@ import { AddNoteComponent } from './add-note/add-note.component';
 import { TemaCurs6Module } from './tema-curs6/tema-curs6.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoteService } from './note.service';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NoteService } from './note.service';
     FilterComponent,
     HomeComponent,
     AddNoteComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

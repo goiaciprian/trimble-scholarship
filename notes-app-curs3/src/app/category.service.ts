@@ -10,20 +10,9 @@ export class CategoryService {
     { name: 'Done', id: '2' },
     { name: 'Doing', id: '3' },
   ];
-
-  private selectedCategory: string = '1';
-
   constructor() {}
 
   getCategories(): Category[] {
     return this._category;
-  }
-
-  getSelectedCategory() {
-    return this.selectedCategory;
-  }
-
-  setCategory(id: string) {
-    this.selectedCategory = id;
   }
 }

@@ -1,10 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from '../category';
 import { CategoryService } from '../category.service';
@@ -31,7 +26,7 @@ export class AddNoteComponent implements OnInit {
     this.myForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required, Validators.minLength(10)]],
-      categoryId: [-1, [Validators.required]],
+      categoryId: ['-1', [Validators.required]],
     });
     this.categories = this._categoryService.getCategories();
   }

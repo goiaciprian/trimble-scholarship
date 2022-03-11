@@ -1,5 +1,9 @@
-<app-filter></app-filter>
+<div class="container-control">
+  <app-search (emitSearchValue)="receiveSearchedValue($event)"></app-search>
+  <app-filter (emitSelectedFilter)="receiveCategoryId($event)"></app-filter>
+</div>
 <div class="cards-tools-container">
-  <app-note> </app-note>
+  <app-note [selectedCategotyId]="categoryId" [searchedValue]="searchedValue">
+  </app-note>
   <app-tools> </app-tools>
 </div>
