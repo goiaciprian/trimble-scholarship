@@ -22,6 +22,6 @@ export class SearchComponent implements OnInit {
     this.searchTimeout = setTimeout(() => {
       this.emitSearchValue.emit(this.searchValue);
       clearTimeout(this.searchTimeout);
-    }, 800);
+    }, 300);
   }
 }

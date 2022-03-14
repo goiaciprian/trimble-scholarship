@@ -1,5 +1,9 @@
 <div class="mat-card-container">
-  <mat-card *ngFor="let note of notes" class="mat-card">
+  <mat-card
+    *ngFor="let note of notes"
+    [style.backgroundColor]="setNoteColor(note.categoryId)"
+    class="mat-card"
+  >
     <mat-card-header class="mat-card-header">
       {{ note.title }}
     </mat-card-header>
@@ -8,5 +12,13 @@
         {{ note.description }}
       </p>
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button routerLink="/add-note/{{ note.id }}">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteNote(note.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>

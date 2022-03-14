@@ -1,9 +1,26 @@
-.add-note-form {
+.add-note-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  max-width: 300px;
-}
 
-.error-message {
-  color: red;
+  .card-form {
+    width: max-content;
+
+    .add-note-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+    }
+
+    .error-message {
+      color: red;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }

@@ -24,7 +24,10 @@ import { TemaCurs6Module } from './tema-curs6/tema-curs6.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoteService } from './note.service';
 import { SearchComponent } from './search/search.component';
-
+import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpMockApiInterceptor } from './services/http-mock-api.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,8 +53,17 @@ import { SearchComponent } from './search/search.component';
     TemaCurs5Module,
     TemaCurs6Module,
     ReactiveFormsModule,
+    CommonModule,
+    HttpClientModule,
   ],
-  providers: [NoteService],
+  providers: [
+    NoteService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpMockApiInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
