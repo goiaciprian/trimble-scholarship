@@ -3,7 +3,10 @@
   flex-direction: row;
   justify-content: center;
 
-  .filter-div {
+  .filter-div > button {
     margin: 10px;
+    button {
+      margin: 10px;
+    }
   }
 }

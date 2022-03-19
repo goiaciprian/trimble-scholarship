@@ -1,9 +1,17 @@
+<h1 class="center mat-h1 mat-headline">Trimble Notes</h1>
 <div class="container-control">
   <app-search (emitSearchValue)="receiveSearchedValue($event)"></app-search>
   <app-filter (emitSelectedFilter)="receiveCategoryId($event)"></app-filter>
 </div>
+<div *ngIf="noNotes" class="notFoundMessage">
+  <h1 class="mat-h1">Notes not found</h1>
+</div>
 <div class="cards-tools-container">
-  <app-note [selectedCategotyId]="categoryId" [searchedValue]="searchedValue">
+  <app-note
+    (emitNoNotes)="receiveNoNotesValue($event)"
+    [selectedCategotyId]="categoryId"
+    [searchedValue]="searchedValue"
+  >
   </app-note>
   <app-tools> </app-tools>
 </div>

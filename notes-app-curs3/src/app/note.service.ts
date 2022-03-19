@@ -47,24 +47,21 @@ export class NoteService {
       .subscribe();
   }
 
-  getFilteredNotes(categoryId: string) {
-    // if (categoryId === '') return this.notes;
-    // return this.notes.filter((note) => note.categoryId === categoryId);
-    return this.getNotes().pipe(
-      map((notes: Note[]) =>
-        notes.filter((note) => note.categoryId === categoryId)
-      )
-    );
-  }
-
-  getFilteredNotesBySubstring(value: string) {
-    if (value === '') return this.getNotes();
-    return this.getNotes().pipe(
+  getDoubleFilteredNotes(categoryId: string, substring: string) {
+    const notesByCategory =
+      categoryId == ''
+        ? this.getNotes()
+        : this.getNotes().pipe(
+            map((notes: Note[]) =>
+              notes.filter((note) => note.categoryId === categoryId)
+            )
+          );
+    return notesByCategory.pipe(
       map((notes: Note[]) =>
         notes.filter(
           (note: Note) =>
-            note.title.toLowerCase().includes(value.toLowerCase()) ||
-            note.description.toLowerCase().includes(value.toLowerCase())
+            note.title.toLowerCase().includes(substring) ||
+            note.description.toLowerCase().includes(substring)
         )
       )
     );

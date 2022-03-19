@@ -9,6 +9,7 @@ import { ToolsComponent } from './tools/tools.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,6 +29,7 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpMockApiInterceptor } from './services/http-mock-api.interceptor';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +57,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
+    MatSelectModule,
+    MatSnackBarModule,
   ],
   providers: [
     NoteService,

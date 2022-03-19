@@ -1,15 +1,18 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { Category } from '../category';
 import { CategoryService } from '../category.service';
 import { Note } from '../note';
 import { NoteService } from '../note.service';
+import { NotifyService } from '../notifyService/notify.service';
 
 @Component({
   selector: 'app-note',
@@ -19,12 +22,14 @@ import { NoteService } from '../note.service';
 export class NoteComponent implements OnInit, OnChanges {
   notes: Note[] = [];
   categories: Category[] = [];
+  @Output() emitNoNotes = new EventEmitter();
   @Input() selectedCategotyId: string = '';
   @Input() searchedValue: string = '';
 
   constructor(
     private _noteService: NoteService,
-    private _categoryService: CategoryService
+    private _categoryService: CategoryService,
+    private _notify: NotifyService
   ) {}
 
   ngOnInit(): void {
@@ -32,19 +37,13 @@ export class NoteComponent implements OnInit, OnChanges {
     this.categories = this._categoryService.getCategories();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.hasOwnProperty('selectedCategotyId')) {
-      // this.notes = this._noteService.getFilteredNotes(this.selectedCategotyId);
-      this._noteService
-        .getFilteredNotes(this.selectedCategotyId)
-        .subscribe((notes) => (this.notes = notes));
-    }
-
-    if (changes.hasOwnProperty('searchedValue')) {
-      this._noteService
-        .getFilteredNotesBySubstring(this.searchedValue)
-        .subscribe((notes: Note[]) => (this.notes = notes));
-    }
+  ngOnChanges(): void {
+    this._noteService
+      .getDoubleFilteredNotes(this.selectedCategotyId, this.searchedValue)
+      .subscribe((notes) => {
+        this.notes = notes;
+        this.emitNoNotes.emit(notes.length === 0);
+      });
   }
 
   updateNotes() {
@@ -59,8 +58,13 @@ export class NoteComponent implements OnInit, OnChanges {
   }
 
   deleteNote(noteId: string) {
-    this._noteService.deleteNote(noteId).subscribe(() => {
-      this._noteService.getNotes().subscribe((notes) => (this.notes = notes));
+    new Promise((resolve) => {
+      this._noteService.deleteNote(noteId).subscribe(() => {
+        this._noteService.getNotes().subscribe((notes) => (this.notes = notes));
+      });
+      resolve(null);
+    }).then(() => {
+      this._notify.showNotification('Note deleted.');
     });
   }
 }

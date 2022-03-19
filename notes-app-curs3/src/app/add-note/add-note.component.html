@@ -1,5 +1,5 @@
 <div class="add-note-container">
-  <h1>Add a note</h1>
+  <h1 class="mat-h1">{{ titlu }}</h1>
 
   <mat-card class="card-form">
     <mat-card-content>
@@ -8,18 +8,16 @@
           <mat-form-field appearance="fill">
             <mat-label>Titlu</mat-label>
             <input matInput name="noteTitle" formControlName="title" />
+            <mat-error
+              *ngIf="
+                myForm.get('title').invalid &&
+                myForm.get('title').errors &&
+                (myForm.get('title').dirty || myForm.get('title').touched) &&
+                myForm.get('title').hasError('required')
+              "
+              >This filed is required.</mat-error
+            >
           </mat-form-field>
-          <br />
-          <small
-            class="error-message"
-            *ngIf="
-              myForm.get('title').invalid &&
-              myForm.get('title').errors &&
-              (myForm.get('title').dirty || myForm.get('title').touched) &&
-              myForm.get('title').hasError('required')
-            "
-            >This filed is required.</small
-          >
         </div>
         <div>
           <mat-form-field appearance="fill">
@@ -29,41 +27,42 @@
               name="noteDescription"
               formControlName="description"
             ></textarea>
+            <mat-error
+              *ngIf="
+                myForm.get('description').invalid &&
+                myForm.get('description').errors &&
+                (myForm.get('description').dirty ||
+                  myForm.get('description').touched) &&
+                myForm.get('description').hasError('required')
+              "
+              >This filed is required.</mat-error
+            >
+            <mat-error
+              class="error-message"
+              *ngIf="
+                myForm.get('description').invalid &&
+                myForm.get('description').errors &&
+                (myForm.get('description').dirty ||
+                  myForm.get('description').touched) &&
+                myForm.get('description').hasError('minlength')
+              "
+            >
+              The minimum length for this field is 10 characters.
+            </mat-error>
           </mat-form-field>
-          <br />
-          <small
-            class="error-message"
-            *ngIf="
-              myForm.get('description').invalid &&
-              myForm.get('description').errors &&
-              (myForm.get('description').dirty ||
-                myForm.get('description').touched) &&
-              myForm.get('description').hasError('required')
-            "
-            >This filed is required.</small
-          >
-          <small
-            class="error-message"
-            *ngIf="
-              myForm.get('description').invalid &&
-              myForm.get('description').errors &&
-              (myForm.get('description').dirty ||
-                myForm.get('description').touched) &&
-              myForm.get('description').hasError('minlength')
-            "
-          >
-            The minimum length for this field is 10 characters.
-          </small>
         </div>
         <div>
           <mat-form-field appearance="fill">
             <mat-label>Categorie</mat-label>
-            <select matNativeControl formControlName="categoryId" required>
-              <option value="-1" disabled>Alege categorie</option>
-              <option [value]="category.id" *ngFor="let category of categories">
+            <mat-select matNativeControl formControlName="categoryId" required>
+              <mat-option value="-1" disabled>Alege categorie</mat-option>
+              <mat-option
+                [value]="category.id"
+                *ngFor="let category of categories"
+              >
                 {{ category.name }}
-              </option>
-            </select>
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div class="button-container">

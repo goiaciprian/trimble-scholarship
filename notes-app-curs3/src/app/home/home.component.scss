@@ -1,8 +1,19 @@
+.notFoundMessage {
+  text-align: center;
+  margin: 30px;
+}
+
+.center {
+  text-align: center;
+  padding-top: 20px;
+}
+
 .cards-tools-container {
   margin: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .container-control {

@@ -1,11 +1,20 @@
 <div class="filter-container">
-  <div *ngFor="let category of categories" class="filter-div">
+  <div class="filter-div">
     <button
+      *ngFor="let category of categories"
+      [color]="selected === category.id ? 'accent' : 'primary'"
       mat-raised-button
       color="primary"
       (click)="setCategory(category.id)"
     >
       {{ category.name | uppercase }}
+    </button>
+    <button
+      mat-raised-button
+      [color]="selected === '' ? 'accent' : 'primary'"
+      (click)="setCategory('')"
+    >
+      Clear
     </button>
   </div>
 </div>

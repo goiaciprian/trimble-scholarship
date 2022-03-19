@@ -9,6 +9,7 @@ import { CategoryService } from '../category.service';
 })
 export class FilterComponent implements OnInit {
   categories: Category[] = [];
+  selected: string = '';
 
   @Output() emitSelectedFilter = new EventEmitter<string>();
 
@@ -19,6 +20,7 @@ export class FilterComponent implements OnInit {
   }
 
   setCategory(id: string) {
+    this.selected = id;
     this.emitSelectedFilter.emit(id);
   }
 }

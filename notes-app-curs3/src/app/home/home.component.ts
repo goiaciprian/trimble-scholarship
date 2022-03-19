@@ -10,6 +10,8 @@ export class HomeComponent implements OnInit {
 
   searchedValue: string = '';
 
+  noNotes: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -20,5 +22,12 @@ export class HomeComponent implements OnInit {
 
   receiveSearchedValue(value: string) {
     this.searchedValue = value;
+  }
+
+  receiveNoNotesValue(value: boolean) {
+    let updateTimeout = setTimeout(() => {
+      this.noNotes = value;
+      clearTimeout(updateTimeout);
+    }, 200);
   }
 }
