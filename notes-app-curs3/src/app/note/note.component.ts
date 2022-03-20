@@ -3,11 +3,10 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnDestroy,
   OnInit,
   Output,
-  SimpleChanges,
 } from '@angular/core';
+import { catchError } from 'rxjs';
 import { Category } from '../category';
 import { CategoryService } from '../category.service';
 import { Note } from '../note';
@@ -42,7 +41,10 @@ export class NoteComponent implements OnInit, OnChanges {
       .getDoubleFilteredNotes(this.selectedCategotyId, this.searchedValue)
       .subscribe((notes) => {
         this.notes = notes;
-        this.emitNoNotes.emit(notes.length === 0);
+        let emitTimeout = setTimeout(() => {
+          this.emitNoNotes.emit(notes.length === 0);
+          clearTimeout(emitTimeout);
+        }, 100);
       });
   }
 
@@ -58,13 +60,20 @@ export class NoteComponent implements OnInit, OnChanges {
   }
 
   deleteNote(noteId: string) {
-    new Promise((resolve) => {
-      this._noteService.deleteNote(noteId).subscribe(() => {
-        this._noteService.getNotes().subscribe((notes) => (this.notes = notes));
+    this._noteService.deleteNote(noteId).subscribe(() => {
+      this._noteService.getNotes().subscribe((notes) => {
+        this.notes = notes;
+        this._notify.showNotification('Note deleted.');
       });
-      resolve(null);
-    }).then(() => {
-      this._notify.showNotification('Note deleted.');
     });
+
+    // new Promise((resolve) => {
+    //   this._noteService.deleteNote(noteId).subscribe(() => {
+    //     this._noteService.getNotes().subscribe((notes) => (this.notes = notes));
+    //   });
+    //   resolve(null);
+    // }).then(() => {
+    //   this._notify.showNotification('Note deleted.');
+    // });
   }
 }

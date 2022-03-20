@@ -38,7 +38,6 @@
               >This filed is required.</mat-error
             >
             <mat-error
-              class="error-message"
               *ngIf="
                 myForm.get('description').invalid &&
                 myForm.get('description').errors &&
@@ -55,7 +54,6 @@
           <mat-form-field appearance="fill">
             <mat-label>Categorie</mat-label>
             <mat-select matNativeControl formControlName="categoryId" required>
-              <mat-option value="-1" disabled>Alege categorie</mat-option>
               <mat-option
                 [value]="category.id"
                 *ngFor="let category of categories"
@@ -63,12 +61,14 @@
                 {{ category.name }}
               </mat-option>
             </mat-select>
+            <mat-error> This filed is required. </mat-error>
           </mat-form-field>
         </div>
         <div class="button-container">
           <button
             mat-raised-button
             class="button-submit"
+            color="primary"
             [disabled]="!myForm.valid"
             type="submit"
           >

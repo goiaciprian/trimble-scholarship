@@ -25,9 +25,6 @@ export class HomeComponent implements OnInit {
   }
 
   receiveNoNotesValue(value: boolean) {
-    let updateTimeout = setTimeout(() => {
-      this.noNotes = value;
-      clearTimeout(updateTimeout);
-    }, 200);
+    this.noNotes = value;
   }
 }

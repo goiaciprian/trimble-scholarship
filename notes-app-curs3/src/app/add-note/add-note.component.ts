@@ -46,7 +46,7 @@ export class AddNoteComponent implements OnInit {
         [Validators.required, Validators.minLength(10)],
       ],
       categoryId: [
-        this.currentNote === null ? '-1' : this.currentNote.categoryId,
+        this.currentNote === null ? '' : this.currentNote.categoryId,
         [Validators.required],
       ],
     });
